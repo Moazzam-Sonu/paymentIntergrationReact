@@ -7,7 +7,9 @@ const Notification = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const socket = io(import.meta.env.VITE_BACKEND_URL);
+    const socket = io(import.meta.env.VITE_BACKEND_URL,{
+      transports: ['websocket']
+    });
     socket.on('paymentSuccess', (data) => {
       toast.success(data.message,{
         autoClose:false,
